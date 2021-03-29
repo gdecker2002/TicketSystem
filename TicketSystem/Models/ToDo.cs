@@ -8,6 +8,7 @@ namespace TicketSystem.Models
 {
     public class ToDo
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter Name.")]
