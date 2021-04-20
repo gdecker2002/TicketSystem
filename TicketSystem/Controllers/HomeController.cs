@@ -10,13 +10,33 @@ namespace TicketSystem.Controllers
 {
 	public class HomeController : Controller
 	{
+		public JsonResult CheckPoint(
+			string pointid, [FromServices]Point point){
+			validate.CheckPoint(pointid, point);
+		}
+		public JsonResult CheckSprint(
+			string sprintnumid, [FromServices] SprintNum sprint)
+		{
+			validate.CheckPoint(sprintnumid, sprint);
+		}
+		public JsonResult CheckStatus(
+			string statusid, [FromServices] Status status)
+		{
+			validate.CheckPoint(statusid, status);
+		}
+		private Point point { get; set; }
+		private SprintNum sprint { get; set; }
+		private Status status { get; set; }
+
+
 		private ToDoContext context;
 		public HomeController(ToDoContext ctx) => context = ctx;
 		public IActionResult Index(string id)
 		{
+			
 			var filters = new Filters(id);
 			ViewBag.Filters = filters;
-			ViewBag.SprintNums = context.SprintNums.ToList();
+			ViewBag.SprintNum = context.SprintNum.ToList();
 			ViewBag.Points = context.Points.ToList();
 			ViewBag.Statuses = context.Statuses.ToList();
 
@@ -40,7 +60,7 @@ namespace TicketSystem.Controllers
 		[HttpGet]
 		public IActionResult Add()
 		{
-			ViewBag.SprintNums = context.SprintNums.ToList();
+			ViewBag.SprintNum = context.SprintNum.ToList();
 			ViewBag.Points = context.Points.ToList();
 			ViewBag.Statuses = context.Statuses.ToList();
 
@@ -58,7 +78,7 @@ namespace TicketSystem.Controllers
 			}
 			else
 			{
-				ViewBag.SprintNums = context.SprintNums.ToList();
+				ViewBag.SprintNums = context.SprintNum.ToList();
 				ViewBag.Points = context.Points.ToList();
 				ViewBag.Statuses = context.Statuses.ToList();
 				return View(task);

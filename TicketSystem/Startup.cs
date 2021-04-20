@@ -24,6 +24,11 @@ namespace TicketSystem
 
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddTransient(typeof(Point));
+			services.AddTransient(typeof(SprintNum));
+			services.AddTransient(typeof(Status));
+			
+
 			services.AddDbContext<ToDoContext>(options => options.UseSqlServer(
 				Configuration.GetConnectionString("ToDoContext")));
 

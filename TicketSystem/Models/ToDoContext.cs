@@ -11,7 +11,7 @@ namespace TicketSystem.Models
 		public ToDoContext(DbContextOptions<ToDoContext> options)
 			: base(options) { }
 		public DbSet<ToDo> ToDos { get; set; }
-		public DbSet<SprintNum> SprintNums { get; set; }
+		public DbSet<SprintNum> SprintNum { get; set; }
 		public DbSet<Point> Points { get; set; }
 		public DbSet<Status> Statuses { get; set; }
 
